@@ -132,6 +132,9 @@ PUBLIC void yield(void) {
 	
 	p = FIRST_PROC;
 	for (p = FIRST_PROC; p <= LAST_PROC; p++) {
+		if (p->state != PROC_READY)
+			continue;
+
 		// Iterate untill gets the first process that did not run
 		if (p->counter == 0)
 			break;
