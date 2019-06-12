@@ -131,9 +131,10 @@ PUBLIC void yield(void) {
 		sched(curr_proc);
 	
 	p = FIRST_PROC;
-	while(p->counter != 0) {
+	for (p = FIRST_PROC; p <= LAST_PROC; p++) {
 		// Iterate untill gets the first process that did not run
-		p = p++;
+		if (p->counter == 0)
+			break;
 	}
 
 	p->counter = 1;
